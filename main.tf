@@ -128,6 +128,28 @@ resource "intersight_networkconfig_policy" "connectivity1" {
   }
 }
 
+# =============================================================================
+# Multicast
+# -----------------------------------------------------------------------------
+
+resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
+  name               = "fabric_multicast_policy1"
+  description        = "fabric multicast policy"
+  querier_ip_address = ""
+  querier_state      = "Disabled"
+  snooping_state     = "Enabled"
+  organization {
+    moid = var.organization
+  }
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}
+
 
 # =============================================================================
 # KVM Policy
