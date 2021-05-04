@@ -133,8 +133,8 @@ resource "intersight_networkconfig_policy" "connectivity1" {
 # -----------------------------------------------------------------------------
 
 resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
-  name               = "fabric_multicast_policy1"
-  description        = "fabric multicast policy"
+  name               = "${var.policy_prefix}-multicast"
+  description        = var.description
   querier_ip_address = ""
   querier_state      = "Disabled"
   snooping_state     = "Enabled"
