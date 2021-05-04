@@ -1,6 +1,6 @@
 # the port policy is the parent for port mode and role
 resource "intersight_fabric_port_policy" "fabric_port_policy1" {
-  name         = "${var.policy_prefix}-6454-portpolicy"
+  name         = "${var.policy_prefix}-6454-port"
   description  = var.description
   device_model = "UCS-FI-6454"
   organization {
