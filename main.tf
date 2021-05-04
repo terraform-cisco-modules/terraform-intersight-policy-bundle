@@ -215,3 +215,24 @@ resource "intersight_vmedia_policy" "vmedia1" {
     }
   }
 }
+
+# =============================================================================
+# System Qos Policy
+# -----------------------------------------------------------------------------
+
+# this will create the default System QoS policy with zero customization
+resource "intersight_fabric_system_qos_policy" "qos1" {
+  name        = "${var.policy_prefix}-system-qos"
+  description = var.description
+
+  organization {
+    moid = var.organization
+  }
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}
