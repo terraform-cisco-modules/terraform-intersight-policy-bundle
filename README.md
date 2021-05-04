@@ -29,6 +29,7 @@ No modules.
 | [intersight_fabric_port_mode.fabric_port_mode1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_port_mode) | resource |
 | [intersight_fabric_port_policy.fabric_port_policy1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_port_policy) | resource |
 | [intersight_fabric_server_role.fabric_server_role1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_server_role) | resource |
+| [intersight_fabric_system_qos_policy.qos1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_system_qos_policy) | resource |
 | [intersight_fabric_uplink_pc_role.fabric_uplink_pc_role1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_uplink_pc_role) | resource |
 | [intersight_fabric_vlan.fabric_vlan1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_vlan) | resource |
 | [intersight_fabric_vlan.fabric_vlan2](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_vlan) | resource |
@@ -54,8 +55,11 @@ No modules.
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_description"></a> [description](#input\_description) | description field for all policies | `string` | `"Created by Terraform. Do not edit manually."` | no |
+| <a name="input_fc_port_count_6454"></a> [fc\_port\_count\_6454](#input\_fc\_port\_count\_6454) | number of ports to assign to FC starting at port 1 | `number` | `0` | no |
 | <a name="input_organization"></a> [organization](#input\_organization) | moid for organization in which to create the policies | `string` | n/a | yes |
 | <a name="input_policy_prefix"></a> [policy\_prefix](#input\_policy\_prefix) | prefix for all policies created | `string` | `"terraform-standard"` | no |
+| <a name="input_port_channel_6454"></a> [port\_channel\_6454](#input\_port\_channel\_6454) | list of port numbers to be assigned to uplink port channel | `set(string)` | n/a | yes |
+| <a name="input_server_ports_6454"></a> [server\_ports\_6454](#input\_server\_ports\_6454) | list of port numbers to be assigned to server ports | `set(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | user tags to be applied to all policies | `list(map(string))` | n/a | yes |
 
 ## Outputs

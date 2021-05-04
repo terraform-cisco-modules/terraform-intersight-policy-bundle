@@ -20,3 +20,17 @@ variable "tags" {
   type        = list(map(string))
   description = "user tags to be applied to all policies"
 }
+
+variable "server_ports_6454" {
+  type = set(string)
+  description = "list of port numbers to be assigned to server ports"
+}
+variable "port_channel_6454" {
+  type = set(string)
+  description = "list of port numbers to be assigned to uplink port channel"
+}
+variable "fc_port_count_6454" {
+  type = number
+  description = "number of ports to assign to FC starting at port 1"
+  default = 0
+}
