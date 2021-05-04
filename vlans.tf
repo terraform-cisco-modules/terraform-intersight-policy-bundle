@@ -43,3 +43,15 @@ resource "intersight_fabric_vlan" "fabric_vlan2" {
     moid = intersight_fabric_eth_network_policy.fabric_eth_network_policy1.id
   }
 }
+resource "intersight_fabric_vlan" "fabric_vlan3" {
+  auto_allow_on_uplinks = true
+  is_native             = false
+  name                  = "imm_109"
+  vlan_id               = 109
+  multicast_policy {
+    moid = intersight_fabric_multicast_policy.fabric_multicast_policy1.moid
+  }
+  eth_network_policy {
+    moid = intersight_fabric_eth_network_policy.fabric_eth_network_policy1.id
+  }
+}
