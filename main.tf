@@ -236,3 +236,23 @@ resource "intersight_fabric_system_qos_policy" "qos1" {
     }
   }
 }
+
+resource "intersight_access_policy" "access1" {
+  name        = "${var.policy_prefix}-imc-access"
+  description = var.description
+  inband_vlan = var.imc_access_vlan
+  inband_ip_pool {
+    object_type = "ippool.Pool"
+    moid        = var.imc_access_pool
+  }
+  organization {
+    moid = var.organization
+  }
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}

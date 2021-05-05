@@ -34,3 +34,16 @@ variable "fc_port_count_6454" {
   description = "number of ports to assign to FC starting at port 1"
   default = 0
 }
+variable "uplink_vlans_6454" {
+  type = map(number)
+  description = "map of vlan names and IDs to be used on FI uplinks"
+}
+
+variable "imc_access_pool" {
+  type = string
+  description = "moid of IP pool for IMC access"
+}
+variable "imc_access_vlan" {
+  type = number
+  description = "ID of VLAN for IMC access"
+}

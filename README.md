@@ -22,6 +22,7 @@ No modules.
 
 | Name | Type |
 |------|------|
+| [intersight_access_policy.access1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/access_policy) | resource |
 | [intersight_boot_precision_policy.boot_precision1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/boot_precision_policy) | resource |
 | [intersight_deviceconnector_policy.dc1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/deviceconnector_policy) | resource |
 | [intersight_fabric_eth_network_policy.fabric_eth_network_policy1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_eth_network_policy) | resource |
@@ -32,7 +33,6 @@ No modules.
 | [intersight_fabric_system_qos_policy.qos1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_system_qos_policy) | resource |
 | [intersight_fabric_uplink_pc_role.fabric_uplink_pc_role1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_uplink_pc_role) | resource |
 | [intersight_fabric_vlan.fabric_vlan1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_vlan) | resource |
-| [intersight_fabric_vlan.fabric_vlan2](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_vlan) | resource |
 | [intersight_iam_ldap_group.group1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/iam_ldap_group) | resource |
 | [intersight_iam_ldap_group.group2](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/iam_ldap_group) | resource |
 | [intersight_iam_ldap_group.group3](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/iam_ldap_group) | resource |
@@ -56,11 +56,14 @@ No modules.
 |------|-------------|------|---------|:--------:|
 | <a name="input_description"></a> [description](#input\_description) | description field for all policies | `string` | `"Created by Terraform. Do not edit manually."` | no |
 | <a name="input_fc_port_count_6454"></a> [fc\_port\_count\_6454](#input\_fc\_port\_count\_6454) | number of ports to assign to FC starting at port 1 | `number` | `0` | no |
+| <a name="input_imc_access_pool"></a> [imc\_access\_pool](#input\_imc\_access\_pool) | moid of IP pool for IMC access | `string` | n/a | yes |
+| <a name="input_imc_access_vlan"></a> [imc\_access\_vlan](#input\_imc\_access\_vlan) | ID of VLAN for IMC access | `number` | n/a | yes |
 | <a name="input_organization"></a> [organization](#input\_organization) | moid for organization in which to create the policies | `string` | n/a | yes |
 | <a name="input_policy_prefix"></a> [policy\_prefix](#input\_policy\_prefix) | prefix for all policies created | `string` | `"terraform-standard"` | no |
 | <a name="input_port_channel_6454"></a> [port\_channel\_6454](#input\_port\_channel\_6454) | list of port numbers to be assigned to uplink port channel | `set(string)` | n/a | yes |
 | <a name="input_server_ports_6454"></a> [server\_ports\_6454](#input\_server\_ports\_6454) | list of port numbers to be assigned to server ports | `set(string)` | n/a | yes |
 | <a name="input_tags"></a> [tags](#input\_tags) | user tags to be applied to all policies | `list(map(string))` | n/a | yes |
+| <a name="input_uplink_vlans_6454"></a> [uplink\_vlans\_6454](#input\_uplink\_vlans\_6454) | map of vlan names and IDs to be used on FI uplinks | `map(number)` | n/a | yes |
 
 ## Outputs
 
