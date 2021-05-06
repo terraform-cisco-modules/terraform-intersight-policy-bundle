@@ -25,6 +25,8 @@ No modules.
 | [intersight_access_policy.access1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/access_policy) | resource |
 | [intersight_boot_precision_policy.boot_precision1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/boot_precision_policy) | resource |
 | [intersight_deviceconnector_policy.dc1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/deviceconnector_policy) | resource |
+| [intersight_fabric_eth_network_control_policy.fabric_eth_network_control_policy1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_eth_network_control_policy) | resource |
+| [intersight_fabric_eth_network_group_policy.fabric_eth_network_group_policy1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_eth_network_group_policy) | resource |
 | [intersight_fabric_eth_network_policy.fabric_eth_network_policy1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_eth_network_policy) | resource |
 | [intersight_fabric_multicast_policy.fabric_multicast_policy1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_multicast_policy) | resource |
 | [intersight_fabric_port_mode.fabric_port_mode1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/fabric_port_mode) | resource |
@@ -46,6 +48,8 @@ No modules.
 | [intersight_storage_disk_group_policy.group1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/storage_disk_group_policy) | resource |
 | [intersight_storage_storage_policy.storage1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/storage_storage_policy) | resource |
 | [intersight_vmedia_policy.vmedia1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/vmedia_policy) | resource |
+| [intersight_vnic_eth_adapter_policy.v_eth_adapter1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/vnic_eth_adapter_policy) | resource |
+| [intersight_vnic_eth_qos_policy.v_eth_qos1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/vnic_eth_qos_policy) | resource |
 | [intersight_iam_end_point_role.imc_admin](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/iam_end_point_role) | data source |
 | [intersight_iam_end_point_role.imc_readonly](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/iam_end_point_role) | data source |
 | [intersight_iam_end_point_role.imc_user](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/data-sources/iam_end_point_role) | data source |
