@@ -6,7 +6,7 @@ resource "intersight_fabric_eth_network_group_policy" "fabric_eth_network_group_
   # target_platform = "FIAttached"
   vlan_settings {
     native_vlan   = 1
-    allowed_vlans = "1010"
+    allowed_vlans = join(",", values(var.uplink_vlans_6454))
   }
   organization {
     moid = var.organization
