@@ -215,6 +215,23 @@ resource "intersight_vmedia_policy" "vmedia1" {
     }
   }
 }
+resource "intersight_vmedia_policy" "vmedia2" {
+  description   = var.description
+  enabled       = true
+  encryption    = false
+  low_power_usb = true
+  name          = "${var.policy_prefix}-vmedia-enabled"
+  organization {
+    moid = var.organization
+  }
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}
 
 # =============================================================================
 # System Qos Policy
