@@ -10,7 +10,7 @@ resource "intersight_storage_disk_group_policy" "group1" {
   raid_level  = "Raid1"
   span_groups = [{
     additional_properties = ""
-    class_id              = "storage.LocalDisk"
+    class_id              = "storage.SpanGroup"
     disks = [{
       additional_properties = ""
       class_id              = "storage.LocalDisk"
@@ -48,7 +48,7 @@ resource "intersight_storage_storage_policy" "storage1" {
   disk_group_policies = [{
     additional_properties = ""
     moid                  = intersight_storage_disk_group_policy.group1.moid
-    class_id              = ""
+    class_id              = "mo.MoRef"
     object_type           = "storage.DiskGroupPolicy"
     selector              = ""
   }]
