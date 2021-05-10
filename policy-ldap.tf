@@ -41,25 +41,17 @@ resource "intersight_iam_ldap_group" "group3" {
 
 # LDAP Provider or LDAP Server for user authentication.
 resource "intersight_iam_ldap_provider" "provider1" {
-  ldap_policy = [{
-    additional_properties = ""
-    class_id              = ""
+  ldap_policy {
     moid                  = intersight_iam_ldap_policy.policy1.moid
-    object_type           = ""
-    selector              = ""
-  }]
+  }
   port   = 389
   server = "172.16.1.90"
 }
 
 resource "intersight_iam_ldap_provider" "provider2" {
-  ldap_policy = [{
-    additional_properties = ""
-    class_id              = ""
+  ldap_policy {
     moid                  = intersight_iam_ldap_policy.policy1.moid
-    object_type           = ""
-    selector              = ""
-  }]
+  }
   port   = 389
   server = "172.16.1.91"
 }
@@ -75,7 +67,7 @@ resource "intersight_iam_ldap_policy" "policy1" {
     base_dn                    = "dc=auslab,dc=cisco,dc=com"
     bind_dn                    = "" # why is this required?
     bind_method                = "LoginCredentials"
-    class_id                   = "" # why is this required?
+    class_id                   = "iam.LdapBaseProperties"
     domain                     = "auslab.cisco.com"
     enable_encryption          = false
     enable_group_authorization = true
@@ -83,7 +75,7 @@ resource "intersight_iam_ldap_policy" "policy1" {
     group_attribute            = "memberOf"
     is_password_set            = false
     nested_group_search_depth  = 128
-    object_type                = "" # why is this required?
+    object_type                = "iam.LdapBaseProperties"
     password                   = "" # why is this required?
     timeout                    = 30
   }]
