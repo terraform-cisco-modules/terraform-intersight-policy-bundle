@@ -18,7 +18,13 @@ resource "intersight_boot_precision_policy" "boot_precision1" {
     object_type = "boot.LocalDisk"
   }
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  # add policy to the specified server profile template
+  profiles {
+    moid        = intersight_server_profile_template.template1.moid
+    object_type = "server.ProfileTemplate"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -39,7 +45,8 @@ resource "intersight_deviceconnector_policy" "dc1" {
   lockout_enabled = true
   name            = "${var.policy_prefix}-device-connector"
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -59,12 +66,23 @@ resource "intersight_ntp_policy" "ntp1" {
   description = var.description
   enabled     = true
   name        = "${var.policy_prefix}-ntp"
+  timezone    = "America/Chicago"
   ntp_servers = [
     "172.16.1.90",
     "172.16.1.91"
   ]
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  # assign this policy to the domain profile being created
+  profiles {
+    moid        = intersight_fabric_switch_profile.fabric_switch_profile_a.moid
+    object_type = "fabric.SwitchProfile"
+  }
+  profiles {
+    moid        = intersight_fabric_switch_profile.fabric_switch_profile_b.moid
+    object_type = "fabric.SwitchProfile"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -73,7 +91,6 @@ resource "intersight_ntp_policy" "ntp1" {
       value = tags.value.value
     }
   }
-  timezone = "America/Chicago"
 }
 
 
@@ -86,7 +103,13 @@ resource "intersight_ipmioverlan_policy" "ipmi2" {
   enabled     = false
   name        = "${var.policy_prefix}-ipmi-disabled"
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  # add policy to the specified server profile template
+  profiles {
+    moid        = intersight_server_profile_template.template1.moid
+    object_type = "server.ProfileTemplate"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -117,7 +140,17 @@ resource "intersight_networkconfig_policy" "connectivity1" {
   enable_ipv6dns_from_dhcp = false
   name                     = "${var.policy_prefix}-dns"
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  # assign this policy to the domain profile being created
+  profiles {
+    moid        = intersight_fabric_switch_profile.fabric_switch_profile_a.moid
+    object_type = "fabric.SwitchProfile"
+  }
+  profiles {
+    moid        = intersight_fabric_switch_profile.fabric_switch_profile_b.moid
+    object_type = "fabric.SwitchProfile"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -139,7 +172,8 @@ resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
   querier_state      = "Disabled"
   snooping_state     = "Enabled"
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -166,6 +200,11 @@ resource "intersight_kvm_policy" "kvmpolicy1" {
     moid = var.organization
   }
   remote_port = 2068
+  # add policy to the specified server profile template
+  profiles {
+    moid        = intersight_server_profile_template.template1.moid
+    object_type = "server.ProfileTemplate"
+  }
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -205,7 +244,8 @@ resource "intersight_vmedia_policy" "vmedia1" {
     volume_name             = "NFSDVD"
   }]
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -222,7 +262,13 @@ resource "intersight_vmedia_policy" "vmedia2" {
   low_power_usb = true
   name          = "${var.policy_prefix}-vmedia-enabled"
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  # add policy to the specified server profile template
+  profiles {
+    moid        = intersight_server_profile_template.template1.moid
+    object_type = "server.ProfileTemplate"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -243,7 +289,17 @@ resource "intersight_fabric_system_qos_policy" "qos1" {
   description = var.description
 
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  # assign this policy to the domain profile being created
+  profiles {
+    moid        = intersight_fabric_switch_profile.fabric_switch_profile_a.moid
+    object_type = "fabric.SwitchProfile"
+  }
+  profiles {
+    moid        = intersight_fabric_switch_profile.fabric_switch_profile_b.moid
+    object_type = "fabric.SwitchProfile"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -263,7 +319,13 @@ resource "intersight_access_policy" "access1" {
     moid        = var.imc_access_pool
   }
   organization {
-    moid = var.organization
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  # add policy to the specified server profile template
+  profiles {
+    moid        = intersight_server_profile_template.template1.moid
+    object_type = "server.ProfileTemplate"
   }
   dynamic "tags" {
     for_each = var.tags
