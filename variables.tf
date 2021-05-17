@@ -38,6 +38,11 @@ variable "uplink_vlans_6454" {
   type        = map(number)
   description = "map of vlan names and IDs to be used on FI uplinks"
 }
+variable "vnic_native_vlan" {
+  type        = number
+  description = "native VLAN for vnic profiles"
+  default = 1
+}
 
 variable "vnic_mac_pool" {
   type        = string

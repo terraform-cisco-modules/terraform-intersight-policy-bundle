@@ -4,7 +4,7 @@ resource "intersight_fabric_eth_network_group_policy" "fabric_eth_network_group_
   name        = "${var.policy_prefix}-eth-network-group"
   description = var.description
   vlan_settings {
-    native_vlan   = 1
+    native_vlan   = var.vnic_native_vlan
     allowed_vlans = join(",", values(var.uplink_vlans_6454))
   }
   organization {
