@@ -81,6 +81,7 @@ No modules.
 | <a name="input_tags"></a> [tags](#input\_tags) | user tags to be applied to all policies | `list(map(string))` | n/a | yes |
 | <a name="input_uplink_vlans_6454"></a> [uplink\_vlans\_6454](#input\_uplink\_vlans\_6454) | map of vlan names and IDs to be used on FI uplinks | `map(number)` | n/a | yes |
 | <a name="input_vnic_mac_pool"></a> [vnic\_mac\_pool](#input\_vnic\_mac\_pool) | moid of MAC pool for use with vnics | `string` | n/a | yes |
+| <a name="input_vnic_native_vlan"></a> [vnic\_native\_vlan](#input\_vnic\_native\_vlan) | native VLAN for vnic profiles | `number` | `1` | no |
 
 ## Outputs
 
