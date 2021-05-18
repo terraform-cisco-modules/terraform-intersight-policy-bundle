@@ -34,7 +34,8 @@ resource "intersight_iam_end_point_user_policy" "user_policy1" {
 
 # Mapping of endpoint user to endpoint roles.
 resource "intersight_iam_end_point_user_role" "roleadmin" {
-  enabled = true
+  enabled  = true
+  password = var.imc_admin_password
   end_point_role {
     moid        = data.intersight_iam_end_point_role.admin_role.results[0].moid
     object_type = data.intersight_iam_end_point_role.admin_role.results[0].object_type
@@ -47,7 +48,6 @@ resource "intersight_iam_end_point_user_role" "roleadmin" {
     moid        = intersight_iam_end_point_user_policy.user_policy1.moid
     object_type = intersight_iam_end_point_user_policy.user_policy1.object_type
   }
-  password = "Ch@ng3Me"
 }
 
 resource "intersight_iam_end_point_user" "iam_end_point_user1" {

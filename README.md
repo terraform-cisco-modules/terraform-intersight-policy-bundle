@@ -74,6 +74,7 @@ No modules.
 | <a name="input_fc_port_count_6454"></a> [fc\_port\_count\_6454](#input\_fc\_port\_count\_6454) | number of ports to assign to FC starting at port 1 | `number` | `0` | no |
 | <a name="input_imc_access_pool"></a> [imc\_access\_pool](#input\_imc\_access\_pool) | moid of IP pool for IMC access | `string` | n/a | yes |
 | <a name="input_imc_access_vlan"></a> [imc\_access\_vlan](#input\_imc\_access\_vlan) | ID of VLAN for IMC access | `number` | n/a | yes |
+| <a name="input_imc_admin_password"></a> [imc\_admin\_password](#input\_imc\_admin\_password) | password for the local user policy for IMC | `string` | `"Cha@ng3Me"` | no |
 | <a name="input_organization"></a> [organization](#input\_organization) | moid for organization in which to create the policies | `string` | n/a | yes |
 | <a name="input_policy_prefix"></a> [policy\_prefix](#input\_policy\_prefix) | prefix for all policies created | `string` | `"terraform-standard"` | no |
 | <a name="input_port_channel_6454"></a> [port\_channel\_6454](#input\_port\_channel\_6454) | list of port numbers to be assigned to uplink port channel | `set(string)` | n/a | yes |

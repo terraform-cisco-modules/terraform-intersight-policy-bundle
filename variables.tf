@@ -41,7 +41,7 @@ variable "uplink_vlans_6454" {
 variable "vnic_native_vlan" {
   type        = number
   description = "native VLAN for vnic profiles"
-  default = 1
+  default     = 1
 }
 
 variable "vnic_mac_pool" {
@@ -56,4 +56,10 @@ variable "imc_access_pool" {
 variable "imc_access_vlan" {
   type        = number
   description = "ID of VLAN for IMC access"
+}
+
+variable "imc_admin_password" {
+  type        = string
+  description = "password for the local user policy for IMC"
+  default     = "Cha@ng3Me"
 }
