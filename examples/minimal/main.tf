@@ -6,7 +6,6 @@ module "intersight_policy" {
   vnic_mac_pool   = var.mac_pool_moid
   imc_access_pool = var.ip_pool_moid
 
-  description   = "my first policy"
   policy_prefix = "my-first"
 
   # Fabric Interconnect 6454 config specifics
@@ -23,9 +22,4 @@ module "intersight_policy" {
   ntp_servers = ["time-a-g.nist.gov"]
 
   dns_preferred = "172.16.1.98"
-
-  # tags are optional but helpful for searching
-  tags = [
-    { "key" : "orchestrator", "value" : "terraform" }
-  ]
 }
