@@ -1,3 +1,17 @@
+# Create Policy
+
+This example is a minimal set of inputs needed to use this module to create over 20 policies in an Intersight organization.
+
+## Usage
+
+To run this example you need to execute:
+
+```bash
+$ terraform init
+$ terraform plan
+$ terraform apply
+```
+
 ## Requirements
 
 | Name | Version |
