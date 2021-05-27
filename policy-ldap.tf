@@ -18,11 +18,6 @@ resource "intersight_iam_end_point_user_policy" "user_policy1" {
     object_type = "organization.Organization"
     moid        = var.organization
   }
-  # add policy to the specified server profile template
-  profiles {
-    moid        = intersight_server_profile_template.template1.moid
-    object_type = "server.ProfileTemplate"
-  }
   dynamic "tags" {
     for_each = var.tags
     content {
