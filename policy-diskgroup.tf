@@ -81,3 +81,29 @@ resource "intersight_storage_storage_policy" "storage1" {
     }
   }
 }
+
+resource "intersight_sdcard_policy" "sdcard1" {
+  name        = "${var.policy_prefix}-sdcard-os"
+  description = var.description
+  partitions {
+    type        = "OS"
+    object_type = "sdcard.Partition"
+    virtual_drives {
+      enable      = true
+      object_type = "sdcard.OperatingSystem"
+      additional_properties = jsonencode({
+        Name = "Hypervisor"
+      })
+    }
+  }
+  organization {
+    moid = var.organization
+  }
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}
