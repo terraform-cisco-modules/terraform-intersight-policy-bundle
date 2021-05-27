@@ -1,25 +1,45 @@
+# =============================================================================
+# External references
+# -----------------------------------------------------------------------------
 
-variable "description" {
+variable "organization" {
   type        = string
-  description = "description field for all policies"
-  default     = "Created by Terraform. Do not edit manually."
+  description = "moid for organization in which to create the policies"
 }
+variable "vnic_mac_pool" {
+  type        = string
+  description = "moid of MAC pool for use with vnics"
+}
+variable "imc_access_pool" {
+  type        = string
+  description = "moid of IP pool for IMC access"
+}
+
+
+# =============================================================================
+# Naming and tagging
+# -----------------------------------------------------------------------------
 
 variable "policy_prefix" {
   type        = string
   description = "prefix for all policies created"
   default     = "terraform-standard"
 }
-
-variable "organization" {
+variable "description" {
   type        = string
-  description = "moid for organization in which to create the policies"
+  description = "description field for all policies"
+  default     = "Created by Terraform. Do not edit manually."
 }
-
 variable "tags" {
   type        = list(map(string))
   description = "user tags to be applied to all policies"
+  default     = []
 }
+
+
+# =============================================================================
+# Fabric Interconnect ports and VLANs
+# -----------------------------------------------------------------------------
 
 variable "server_ports_6454" {
   type        = set(string)
@@ -44,22 +64,41 @@ variable "vnic_native_vlan" {
   default     = 1
 }
 
-variable "vnic_mac_pool" {
-  type        = string
-  description = "moid of MAC pool for use with vnics"
-}
 
-variable "imc_access_pool" {
-  type        = string
-  description = "moid of IP pool for IMC access"
-}
+# =============================================================================
+# IMC
+# -----------------------------------------------------------------------------
+
 variable "imc_access_vlan" {
   type        = number
   description = "ID of VLAN for IMC access"
 }
-
 variable "imc_admin_password" {
   type        = string
   description = "password for the local user policy for IMC"
   default     = "Cha@ng3Me"
+}
+
+
+# =============================================================================
+# IPs
+# -----------------------------------------------------------------------------
+
+variable "ntp_servers" {
+  type        = list(string)
+  description = "list of NTP servers"
+}
+variable "ntp_timezone" {
+  type        = string
+  description = "valid timezone as documented at https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/ntp_policy"
+  default     = "America/Chicago"
+}
+variable "dns_preferred" {
+  type        = string
+  description = "IP address of primary (preferred) DNS server"
+}
+variable "dns_alternate" {
+  type        = string
+  description = "IP address of secondary (alternate) DNS server"
+  default     = ""
 }
