@@ -9,8 +9,19 @@ resource "intersight_boot_precision_policy" "boot_precision1" {
   enforce_uefi_secure_boot = false
   boot_devices {
     enabled     = true
-    name        = "NFSDVD"
+    name        = "KVM_DVD"
     object_type = "boot.VirtualMedia"
+    additional_properties = jsonencode({
+      Subtype = "kvm-mapped-dvd"
+    })
+  }
+  boot_devices {
+    enabled     = true
+    name        = "IMC_DVD"
+    object_type = "boot.VirtualMedia"
+    additional_properties = jsonencode({
+      Subtype = "cimc-mapped-dvd"
+    })
   }
   boot_devices {
     enabled     = true
@@ -20,11 +31,6 @@ resource "intersight_boot_precision_policy" "boot_precision1" {
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
-  }
-  # add policy to the specified server profile template
-  profiles {
-    moid        = intersight_server_profile_template.template1.moid
-    object_type = "server.ProfileTemplate"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -66,11 +72,8 @@ resource "intersight_ntp_policy" "ntp1" {
   description = var.description
   enabled     = true
   name        = "${var.policy_prefix}-ntp"
-  timezone    = "America/Chicago"
-  ntp_servers = [
-    "172.16.1.90",
-    "172.16.1.91"
-  ]
+  timezone    = var.ntp_timezone
+  ntp_servers = var.ntp_servers
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
@@ -106,11 +109,6 @@ resource "intersight_ipmioverlan_policy" "ipmi2" {
     moid        = var.organization
     object_type = "organization.Organization"
   }
-  # add policy to the specified server profile template
-  profiles {
-    moid        = intersight_server_profile_template.template1.moid
-    object_type = "server.ProfileTemplate"
-  }
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -131,8 +129,8 @@ resource "intersight_ipmioverlan_policy" "ipmi2" {
 # will detect that thare changes to apply every time ("::" -> null).
 
 resource "intersight_networkconfig_policy" "connectivity1" {
-  alternate_ipv4dns_server = "172.16.1.90"
-  preferred_ipv4dns_server = "172.16.1.98"
+  alternate_ipv4dns_server = var.dns_alternate
+  preferred_ipv4dns_server = var.dns_preferred
   description              = var.description
   enable_dynamic_dns       = false
   enable_ipv4dns_from_dhcp = false
@@ -190,21 +188,16 @@ resource "intersight_fabric_multicast_policy" "fabric_multicast_policy1" {
 # -----------------------------------------------------------------------------
 
 resource "intersight_kvm_policy" "kvmpolicy1" {
+  name                      = "${var.policy_prefix}-kvm-enabled"
   description               = var.description
   enable_local_server_video = true
   enable_video_encryption   = true
   enabled                   = true
   maximum_sessions          = 4
-  name                      = "${var.policy_prefix}-kvm"
   organization {
     moid = var.organization
   }
   remote_port = 2068
-  # add policy to the specified server profile template
-  profiles {
-    moid        = intersight_server_profile_template.template1.moid
-    object_type = "server.ProfileTemplate"
-  }
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -220,11 +213,11 @@ resource "intersight_kvm_policy" "kvmpolicy1" {
 # -----------------------------------------------------------------------------
 
 resource "intersight_vmedia_policy" "vmedia1" {
+  name          = "${var.policy_prefix}-vmedia-ubuntu"
   description   = var.description
   enabled       = true
   encryption    = false
   low_power_usb = true
-  name          = "${var.policy_prefix}-vmedia-ubuntu"
   mappings = [{
     additional_properties   = ""
     authentication_protocol = "none"
@@ -241,7 +234,7 @@ resource "intersight_vmedia_policy" "vmedia1" {
     remote_path             = "/iso/software/linux"
     sanitized_file_location = "infra-chx.auslab.cisco.com/software/linux/ubuntu-18.04.5-server-amd64.iso"
     username                = ""
-    volume_name             = "NFSDVD"
+    volume_name             = "IMC_DVD"
   }]
   organization {
     moid        = var.organization
@@ -255,20 +248,16 @@ resource "intersight_vmedia_policy" "vmedia1" {
     }
   }
 }
+
 resource "intersight_vmedia_policy" "vmedia2" {
+  name          = "${var.policy_prefix}-vmedia-enabled"
   description   = var.description
   enabled       = true
   encryption    = false
   low_power_usb = true
-  name          = "${var.policy_prefix}-vmedia-enabled"
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
-  }
-  # add policy to the specified server profile template
-  profiles {
-    moid        = intersight_server_profile_template.template1.moid
-    object_type = "server.ProfileTemplate"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -322,10 +311,29 @@ resource "intersight_access_policy" "access1" {
     moid        = var.organization
     object_type = "organization.Organization"
   }
-  # add policy to the specified server profile template
-  profiles {
-    moid        = intersight_server_profile_template.template1.moid
-    object_type = "server.ProfileTemplate"
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}
+
+# =============================================================================
+# Serial Over LAN
+# -----------------------------------------------------------------------------
+
+resource "intersight_sol_policy" "sol1" {
+  name        = "${var.policy_prefix}-sol-off"
+  description = var.description
+  enabled     = false
+  baud_rate   = 9600
+  com_port    = "com1"
+  ssh_port    = 1096
+  organization {
+    moid        = var.organization
+    object_type = "organization.Organization"
   }
   dynamic "tags" {
     for_each = var.tags
