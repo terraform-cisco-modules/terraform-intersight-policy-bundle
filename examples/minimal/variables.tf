@@ -17,10 +17,10 @@ variable "organization_name" {
   default     = "default"
 }
 variable "mac_pool_moid" {
-    type = string
-    description = "moid of MAC pool for VNIC use"
+  type        = string
+  description = "moid of MAC pool for VNIC use"
 }
 variable "ip_pool_moid" {
-    type = string
-    description = "moid of IP pool for IMC use"
+  type        = string
+  description = "moid of IP pool for IMC use"
 }
