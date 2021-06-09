@@ -4,6 +4,12 @@ This module simplifies the creation of basic server and domain policies in the s
 
 This module is intended to give users a jump-start into creating their own policies but will not represent the exact policy that every user will want. The policies can be updated manually or just used a reference to create new policies.
 
+### Caution
+This module creates policy, a server profile template, and a UCS domain profile. When attempting a `terraform destroy`, Terraform is unable to remove the policies that are used by two Fabric Interconnects in the UCS domain profile. You will have to edit the domain profile manually and detatch the following policies from from the fabric interconnects:
+- VLAN policy
+- VSAN policy
+- Port policy
+
 See [examples](./examples/) for more details.
 
 ## Requirements
