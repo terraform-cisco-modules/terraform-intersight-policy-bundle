@@ -1,5 +1,5 @@
 module "intersight_policy" {
-  source = "./modules/terraform-intersight-policy"
+  source = "terraform-cisco-modules/policy-bundle/intersight"
 
   # external sources
   organization    = data.intersight_organization_organization.myorg.id
