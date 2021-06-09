@@ -1,6 +1,6 @@
 # Create Policy
 
-This example is a minimal set of inputs needed to use this module to create over 20 policies in an Intersight organization.
+This example is a **minimal** set of inputs needed to use this module to create over 20 policies in an Intersight organization.
 
 ## Usage
 
