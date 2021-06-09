@@ -76,7 +76,7 @@ No modules.
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_description"></a> [description](#input\_description) | description field for all policies | `string` | `"Created by Terraform. Do not edit manually."` | no |
+| <a name="input_description"></a> [description](#input\_description) | description field for all policies | `string` | `""` | no |
 | <a name="input_dns_alternate"></a> [dns\_alternate](#input\_dns\_alternate) | IP address of secondary (alternate) DNS server | `string` | `""` | no |
 | <a name="input_dns_preferred"></a> [dns\_preferred](#input\_dns\_preferred) | IP address of primary (preferred) DNS server | `string` | n/a | yes |
 | <a name="input_fc_port_count_6454"></a> [fc\_port\_count\_6454](#input\_fc\_port\_count\_6454) | number of ports to assign to FC starting at port 1 | `number` | `0` | no |

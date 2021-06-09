@@ -28,7 +28,7 @@ variable "policy_prefix" {
 variable "description" {
   type        = string
   description = "description field for all policies"
-  default     = "Created by Terraform. Do not edit manually."
+  default     = ""
 }
 variable "tags" {
   type        = list(map(string))
