@@ -1,4 +1,10 @@
-module "intersight_policy" {
+provider "intersight" {
+  apikey    = var.api_key
+  secretkey = var.secretkey
+  endpoint  = var.endpoint
+}
+
+module "intersight_policy_bundle" {
   source = "terraform-cisco-modules/policy-bundle/intersight"
 
   # external sources
