@@ -2,6 +2,8 @@
 
 This module simplifies the creation of basic server and domain policies in the specified Intersight organization. It takes a few inputs and creates more than 20 policies with common settings. It also creates a server profile template and UCS domain profile that use several of those policies. Objects are created with a consistent naming scheme and any tags specified.
 
+This module is intended to give users a jump-start into creating their own policies but will not represent the exact policy that every user will want. The policies can be updated manually or just used a reference to create new policies.
+
 See [examples](./examples/) for more details.
 
 ## Requirements
