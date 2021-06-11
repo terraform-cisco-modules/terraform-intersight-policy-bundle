@@ -132,4 +132,8 @@ resource "intersight_server_profile_template" "template1" {
     moid = intersight_sol_policy.sol1.moid
     object_type = "sol.Policy"
   }
+  policy_bucket {
+    moid = intersight_vnic_lan_connectivity_policy.vnic_lan1.moid
+    object_type = "vnic.LanConnectivityPolicy"
+  }
 }

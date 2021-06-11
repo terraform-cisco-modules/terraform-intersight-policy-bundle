@@ -95,11 +95,6 @@ resource "intersight_vnic_lan_connectivity_policy" "vnic_lan1" {
     object_type = "organization.Organization"
     moid        = var.organization
   }
-  # add policy to the specified server profile template
-  profiles {
-    moid        = intersight_server_profile_template.template1.moid
-    object_type = "server.ProfileTemplate"
-  }
   dynamic "tags" {
     for_each = var.tags
     content {
