@@ -5,10 +5,12 @@
 # create a RAID mirror between the first two physical disks
 
 resource "intersight_storage_drive_group" "group1" {
-  description = var.description
   name        = "${var.policy_prefix}-disk-group"
   raid_level  = "Raid1"
   manual_drive_group = [{
+    additional_properties = ""
+    class_id = "storage.ManualDriveGroup"
+    object_type = "storage.ManualDriveGroup"
     span_groups = [
       {
         slots = "1,2"
@@ -16,6 +18,9 @@ resource "intersight_storage_drive_group" "group1" {
     ]
   }]
   virtual_drives = [{
+    additional_properties = ""
+    class_id = "storage.VirtualDrivePolicy"
+    object_type = "storage.VirtualDrivePolicy"
     boot_drive = false
     expand_to_available = true
     name = "vd0"
@@ -28,9 +33,6 @@ resource "intersight_storage_drive_group" "group1" {
       write_policy = "Default"
     }]
   }]
-  organization {
-    moid = var.organization
-  }
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -47,7 +49,7 @@ resource "intersight_storage_storage_policy" "storage1" {
   name                         = "${var.policy_prefix}-storage"
   unused_disks_state           = "UnconfiguredGood"
   drive_group = [{
-    moid                  = intersight_storage_disk_group_policy.group1.moid
+    moid                  = intersight_storage_drive_group.group1.moid
     class_id              = "mo.MoRef"
     object_type           = "storage.DiskGroupPolicy"
   }]
