@@ -64,7 +64,7 @@ No modules.
 | [intersight_sdcard_policy.sdcard1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/sdcard_policy) | resource |
 | [intersight_server_profile_template.template1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/server_profile_template) | resource |
 | [intersight_sol_policy.sol1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/sol_policy) | resource |
-| [intersight_storage_disk_group_policy.group1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/storage_disk_group_policy) | resource |
+| [intersight_storage_drive_group.group1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/storage_drive_group) | resource |
 | [intersight_storage_storage_policy.storage1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/storage_storage_policy) | resource |
 | [intersight_vmedia_policy.vmedia1](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/vmedia_policy) | resource |
 | [intersight_vmedia_policy.vmedia2](https://registry.terraform.io/providers/CiscoDevNet/intersight/latest/docs/resources/vmedia_policy) | resource |
