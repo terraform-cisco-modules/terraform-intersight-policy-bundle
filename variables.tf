@@ -23,7 +23,7 @@ variable "imc_access_pool" {
 variable "policy_prefix" {
   type        = string
   description = "prefix for all policies created"
-  default     = "terraform-standard"
+  default     = "tf"
 }
 variable "description" {
   type        = string
