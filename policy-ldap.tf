@@ -131,7 +131,6 @@ resource "intersight_iam_ldap_policy" "policy1" {
     enable_group_authorization = true
     filter                     = "samAccountName"
     group_attribute            = "memberOf"
-    is_password_set            = false
     nested_group_search_depth  = 128
     timeout                    = 30
   }
