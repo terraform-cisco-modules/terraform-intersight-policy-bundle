@@ -7,15 +7,6 @@ resource "intersight_fabric_port_policy" "fabric_port_policy1" {
     object_type = "organization.Organization"
     moid        = var.organization
   }
-  # assign this policy to the domain profile being created
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_a.moid
-    object_type = "fabric.SwitchProfile"
-  }
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_b.moid
-    object_type = "fabric.SwitchProfile"
-  }
   dynamic "tags" {
     for_each = var.tags
     content {

@@ -78,15 +78,6 @@ resource "intersight_ntp_policy" "ntp1" {
     moid        = var.organization
     object_type = "organization.Organization"
   }
-  # assign this policy to the domain profile being created
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_a.moid
-    object_type = "fabric.SwitchProfile"
-  }
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_b.moid
-    object_type = "fabric.SwitchProfile"
-  }
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -140,15 +131,6 @@ resource "intersight_networkconfig_policy" "connectivity1" {
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
-  }
-  # assign this policy to the domain profile being created
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_a.moid
-    object_type = "fabric.SwitchProfile"
-  }
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_b.moid
-    object_type = "fabric.SwitchProfile"
   }
   dynamic "tags" {
     for_each = var.tags
@@ -279,15 +261,6 @@ resource "intersight_fabric_system_qos_policy" "qos1" {
     moid        = var.organization
     object_type = "organization.Organization"
   }
-  # assign this policy to the domain profile being created
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_a.moid
-    object_type = "fabric.SwitchProfile"
-  }
-  profiles {
-    moid        = intersight_fabric_switch_profile.fabric_switch_profile_b.moid
-    object_type = "fabric.SwitchProfile"
-  }
   dynamic "tags" {
     for_each = var.tags
     content {
@@ -296,6 +269,10 @@ resource "intersight_fabric_system_qos_policy" "qos1" {
     }
   }
 }
+
+# =============================================================================
+# IMC Access (VLAN and pool)
+# -----------------------------------------------------------------------------
 
 resource "intersight_access_policy" "access1" {
   name        = "${var.policy_prefix}-imc-access"
@@ -329,6 +306,47 @@ resource "intersight_sol_policy" "sol1" {
   baud_rate   = 9600
   com_port    = "com1"
   ssh_port    = 1096
+  organization {
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}
+
+resource "intersight_sol_policy" "sol2112" {
+  name        = "${var.policy_prefix}-sol-port2112"
+  description = var.description
+  enabled     = true
+  baud_rate   = 9600
+  com_port    = "com1"
+  ssh_port    = 2112
+  organization {
+    moid        = var.organization
+    object_type = "organization.Organization"
+  }
+  dynamic "tags" {
+    for_each = var.tags
+    content {
+      key   = tags.value.key
+      value = tags.value.value
+    }
+  }
+}
+
+# =============================================================================
+# SNMP
+# -----------------------------------------------------------------------------
+
+resource "intersight_snmp_policy" "snmp_disabled" {
+  name        = "${var.policy_prefix}-snmp-disabled"
+  description = var.description
+  enabled     = false
   organization {
     moid        = var.organization
     object_type = "organization.Organization"
