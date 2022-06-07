@@ -16,13 +16,13 @@ See [examples](./examples/) for more details.
 
 | Name | Version |
 |------|---------|
-| <a name="requirement_intersight"></a> [intersight](#requirement\_intersight) | >=1.0.8 |
+| <a name="requirement_intersight"></a> [intersight](#requirement\_intersight) | >=1.0.28 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| <a name="provider_intersight"></a> [intersight](#provider\_intersight) | >=1.0.8 |
+| <a name="provider_intersight"></a> [intersight](#provider\_intersight) | >=1.0.28 |
 
 ## Modules
 
